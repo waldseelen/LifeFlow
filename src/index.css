@@ -44,14 +44,14 @@
     }
 
     .btn-primary {
-        @apply btn bg-gradient-to-r from-primary-500 via-primary-400 to-accent-400 text-white;
-        @apply hover:from-primary-600 hover:via-primary-500 hover:to-accent-500 hover:shadow-glow;
-        @apply active:from-primary-700 active:via-primary-600 active:to-accent-600;
+        @apply btn bg-gradient-to-r from-primary-600 via-primary-500 to-primary-400 text-white;
+        @apply hover:from-primary-700 hover:via-primary-600 hover:to-primary-500 hover:shadow-glow;
+        @apply active:from-primary-800 active:via-primary-700 active:to-primary-600;
     }
 
     .btn-success {
-        @apply btn bg-gradient-to-r from-success-500 via-success-400 to-accent-400 text-white;
-        @apply hover:from-success-600 hover:via-success-500 hover:to-accent-500 hover:shadow-glow-success;
+        @apply btn bg-gradient-to-r from-success-600 via-success-500 to-success-400 text-white;
+        @apply hover:from-success-700 hover:via-success-600 hover:to-success-500 hover:shadow-glow-success;
     }
 
     .btn-timer {
@@ -252,7 +252,7 @@
         @apply border border-primary-400/50 dark:border-primary-500/30;
         box-shadow: 0 0 15px rgba(6, 182, 212, 0.15);
     }
-    
+
     .dark .neon-border {
         box-shadow: 0 0 15px rgba(6, 182, 212, 0.25);
     }

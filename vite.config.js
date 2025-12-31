@@ -64,5 +64,31 @@ export default defineConfig({
             '@events': path.resolve(__dirname, './src/events'),
             '@infra': path.resolve(__dirname, './src/infra')
         }
+    },
+    build: {
+        minify: 'terser',
+        terserOptions: {
+            compress: {
+                drop_console: true,
+                drop_debugger: true
+            }
+        },
+        rollupOptions: {
+            output: {
+                manualChunks: {
+                    'echarts': ['echarts'],
+                    'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+                    'ui-vendor': ['clsx', '@heroicons/react'],
+                    'db-vendor': ['dexie', 'dexie-react-hooks'],
+                    'time-vendor': ['luxon']
+                }
+            }
+        },
+        chunkSizeWarningLimit: 1000,
+        cssCodeSplit: true,
+        sourcemap: false,
+        commonjsOptions: {
+            transformMixedEsModules: true
+        }
     }
 });

@@ -194,12 +194,20 @@ export const useTimerStore = create<TimerState>((set, get) => ({
         return get().runningTimers.find((t) => t.activityId === activityId)
     },
 
+    /**
+     * Drift-corrected elapsed time calculation
+     * Bu fonksiyon sekme arka plana gitse bile doğru süreyi hesaplar
+     * çünkü startedAt'tan bu yana geçen gerçek süreyi kullanır
+     */
     getElapsedSeconds: (timer) => {
         if (timer.pausedAt) {
             return timer.accumulatedSec
         }
 
-        const now = get().currentTick
+        // DRIFT CORRECTION: Her zaman Date.now() kullan, currentTick değil
+        // Bu sayede tarayıcı sekmeyi uyutsa bile geri dönüldüğünde
+        // süre doğru hesaplanır
+        const now = Date.now()
         const elapsedSinceStart = Math.floor((now - timer.startedAt) / 1000)
         return timer.accumulatedSec + elapsedSinceStart
     },
